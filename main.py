@@ -66,7 +66,7 @@ def main():
     print('程序开始')
     while True:
         # date = (datetime.datetime.now() + datetime.timedelta(days=+7)).strftime('%Y-%m-%d %H:%M:%S')
-        date = '2018-4-24'
+        date = '2018-4-27'
         update_time = time.strftime('%Y-%m-%d %H:%M:%S')
         fetch_data(date, update_time)
         time.sleep(60)
