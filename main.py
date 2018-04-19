@@ -6,6 +6,10 @@ from email.mime.text import MIMEText
 from email.utils import formataddr
 import time
 
+s = requests.session()
+s.keep_alive = False
+requests.adapters.DEFAULT_RETRIES = 5
+
 my_sender = '1156021653@qq.com'
 my_pass = 'tsqjvexjaiejhiai'
 my_user = ['1498484626@qq.com', '1156021653@qq.com']
