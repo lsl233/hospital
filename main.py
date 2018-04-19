@@ -77,7 +77,7 @@ def main():
         except IOError:
             print('error:', IOError)
             fetch_data(date, update_time)
-        time.sleep(60)
+        time.sleep(60 * 5)
 
 
 main()
