@@ -33,7 +33,7 @@ def send_mail(content):
         print("邮件发送失败")
 
 
-def fetch_data(date):
+def fetch_data(date, update_time):
     api = 'https://wcchapp.cdwit120.com/Hospital/AjaxQueryDoctorForDept'
     r = requests.post(api, headers={
         'user-agent': "Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) "
@@ -43,19 +43,20 @@ def fetch_data(date):
     })
     bs = BeautifulSoup(r.text, "html.parser")
     html = bs.find_all(class_='doctors')
-    doctor_zcr = None
-    number = None
+    doctor_zcr = ''
+    number = ''
     for html in html:
         name = html.find(text='周从容')
-        if name is not None:
+        if name is not '':
             doctor_zcr = name
             number = html.find(class_='am-fl').get_text()
             break
 
-    print(date, doctor_zcr, number)
+    content = 'update time:' + update_time + '查询时间:' + date + '查询医生:' + doctor_zcr + '数量:' + number
+    print(content)
 
-    if doctor_zcr is not None:
-        send_mail(date + '，' + doctor_zcr + '，' + number)
+    if doctor_zcr is not '' and not None:
+        send_mail(content)
         sys.exit(0)
     else:
         print('周从容没有出诊')
@@ -66,7 +67,8 @@ def main():
     while True:
         # date = (datetime.datetime.now() + datetime.timedelta(days=+7)).strftime('%Y-%m-%d %H:%M:%S')
         date = '2018-4-24'
-        fetch_data(date)
+        update_time = time.strftime('%Y-%m-%d %H:%M:%S')
+        fetch_data(date, update_time)
         time.sleep(60)
 
 
