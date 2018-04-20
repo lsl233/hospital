@@ -70,7 +70,7 @@ def main():
     print('程序开始')
     while True:
         # date = (datetime.datetime.now() + datetime.timedelta(days=+7)).strftime('%Y-%m-%d %H:%M:%S')
-        date = '2018-4-27'
+        date = '2018-4-28'
         update_time = time.strftime('%Y-%m-%d %H:%M:%S')
         try:
             fetch_data(date, update_time)
