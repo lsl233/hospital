@@ -70,7 +70,7 @@ def main():
     print('程序开始')
     while True:
         # date = (datetime.datetime.now() + datetime.timedelta(days=+7)).strftime('%Y-%m-%d %H:%M:%S')
-        date = '2018-4-28'
+        date = '2018-5-5'
         update_time = time.strftime('%Y-%m-%d %H:%M:%S')
         try:
             fetch_data(date, update_time)
@@ -78,6 +78,5 @@ def main():
             print('error:', IOError)
             fetch_data(date, update_time)
         time.sleep(60 * 5)
-
 
 main()
